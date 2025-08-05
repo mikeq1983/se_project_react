@@ -29,7 +29,7 @@ function App() {
 
   const handleContentClick = (evt) => {
     evt.stopPropagation();
-    };
+  };
 
   const handleCardClick = (card) => {
     setActiveModal("preview");
@@ -38,20 +38,19 @@ function App() {
 
   useEffect(() => {
     const handleEscape = (evt) => {
-  if (evt.key === "Escape") {
-  closeActiveModal();
+      if (evt.key === "Escape") {
+        closeActiveModal();
+      }
+    };
+
+    if (activeModal) {
+      document.addEventListener("keydown", handleEscape);
     }
-  };
 
-   if (activeModal) {
-   document.addEventListener("keydown", handleEscape);
-  }
-   
-  return () => {
-  document.removeEventListener("keydown", handleEscape);
-   }
-  }, [activeModal]); 
-
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+    };
+  }, [activeModal]);
 
   useEffect(() => {
     getWeather(coordinates, APIkey)

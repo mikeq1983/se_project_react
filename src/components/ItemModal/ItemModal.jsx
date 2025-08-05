@@ -1,10 +1,21 @@
 import "./ItemModal.css";
 import previewClose from "../../assets/previewClose.png";
 
-function ItemModal({ activeModal, closeActiveModal, card, handleContentClick }) {
+function ItemModal({
+  activeModal,
+  closeActiveModal,
+  card,
+  handleContentClick,
+}) {
   return (
-    <div onClick={closeActiveModal} className={`modal ${activeModal === "preview" && "modal__open"}`}>
-      <div onClick={handleContentClick} className="modal__content modal__content_type_image">
+    <div
+      onClick={closeActiveModal}
+      className={`modal ${activeModal === "preview" && "modal__open"}`}
+    >
+      <div
+        onClick={handleContentClick}
+        className="modal__content modal__content_type_image"
+      >
         <button
           onClick={closeActiveModal}
           type="button"

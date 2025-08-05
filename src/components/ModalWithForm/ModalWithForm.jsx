@@ -10,7 +10,9 @@ function ModalWithForm({
   handleContentClick,
 }) {
   return (
-    <div onClick={closeActiveModal} className={`modal ${activeModal === "add-garment" && "modal__open"}`}
+    <div
+      onClick={closeActiveModal}
+      className={`modal ${activeModal === "add-garment" && "modal__open"}`}
     >
       <div onClick={handleContentClick} className="modal__content">
         <h2 className="modal__title">{title}</h2>
