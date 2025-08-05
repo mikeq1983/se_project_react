@@ -1,0 +1,35 @@
+.modal {
+  position: fixed;
+}
+
+.modal__content {
+  border-radius: 20px;
+  overflow: hidden;
+  font-family: "Cabinet Grotesk regular", Arial, sans-serif;
+  line-height: 24px;
+  font-weight: 700;
+}
+
+.modal__content_type_image {
+  padding: 0;
+  position: relative;
+}
+
+.modal__caption {
+  margin: 20px 32px;
+  font-size: 20px;
+}
+
+.modal__weather {
+  margin: 12px 32px 32px;
+  font-size: 20px;
+}
+
+.modal__preview_close {
+  position: absolute;
+  top: 26px;
+  right: 26px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
