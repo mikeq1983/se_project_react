@@ -6,13 +6,15 @@ function ModalWithForm({
   buttonText,
   title,
   activeModal,
+  isOpen,
   closeActiveModal,
   handleContentClick,
 }) {
+  console.log(isOpen);
   return (
     <div
       onClick={closeActiveModal}
-      className={`modal ${activeModal === "add-garment" && "modal__open"}`}
+      className={`modal ${isOpen && "modal__open"}`}
     >
       <div onClick={handleContentClick} className="modal__content">
         <h2 className="modal__title">{title}</h2>

@@ -58,8 +58,12 @@ function App() {
         const filteredData = processWeatherData(data);
         setWeatherData(filteredData);
       })
-      .catch(console.error);
+      .catch((error) => {
+        console.error("Failed to fetch weather data:", error);
+      });
   }, []);
+
+  console.log("activeModal value:", activeModal);
 
   return (
     <div className="page">
@@ -70,7 +74,7 @@ function App() {
       <ModalWithForm
         title="New Garment"
         buttonText="Add garment"
-        activeModal={activeModal}
+        isOpen={activeModal === "add-garment"}
         closeActiveModal={closeActiveModal}
         handleContentClick={handleContentClick}
       >
@@ -88,14 +92,19 @@ function App() {
           <input
             type="url"
             className="modal__input"
-            id="image"
+            id="imageUrl"
             placeholder="Image URL"
           />
         </label>
         <fieldset className="modal__radio-buttons">
           <legend className="modal__legend">Select the weather type:</legend>
           <label htmlFor="hot" className="modal__label modal__label_type_radio">
-            <input id="hot" type="radio" className="modal__radio-input"></input>{" "}
+            <input
+              id="hot"
+              type="radio"
+              name="weatherType"
+              className="modal__radio-input"
+            ></input>{" "}
             Hot
           </label>
           <label
@@ -105,6 +114,7 @@ function App() {
             <input
               id="warm"
               type="radio"
+              name="weatherType"
               className="modal__radio-input"
             ></input>{" "}
             Warm
@@ -116,6 +126,7 @@ function App() {
             <input
               id="cold"
               type="radio"
+              name="weatherType"
               className="modal__radio-input"
             ></input>{" "}
             Cold
@@ -123,7 +134,7 @@ function App() {
         </fieldset>
       </ModalWithForm>
       <ItemModal
-        activeModal={activeModal}
+        isOpen={activeModal === "preview"}
         card={selectedCard}
         closeActiveModal={closeActiveModal}
         handleContentClick={handleContentClick}
