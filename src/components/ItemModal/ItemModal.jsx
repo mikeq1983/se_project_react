@@ -7,7 +7,12 @@ function ItemModal({
   closeActiveModal,
   card,
   handleContentClick,
+  handleCardDelete,
 }) {
+  const handleDeleteClick = () => {
+    handleCardDelete(card._id);
+  };
+
   return (
     <div
       onClick={closeActiveModal}
@@ -28,9 +33,14 @@ function ItemModal({
             alt="close button"
           />
         </button>
-        <img src={card.link} alt={card.name} className="modal__image" />
+        <img src={card.imageUrl} alt={card.name} className="modal__image" />
         <div className="modal__footer">
-          <h2 className="modal__caption">{card.name}</h2>
+          <div className="modal__button-align">
+            <h2 className="modal__caption">{card.name}</h2>
+            <button onClick={handleDeleteClick} className="modal__delete-btn">
+              Delete Item
+            </button>
+          </div>
           <p className="modal__weather">Weather: {card.weather}</p>
         </div>
       </div>

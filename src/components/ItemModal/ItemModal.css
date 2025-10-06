@@ -16,8 +16,23 @@
 }
 
 .modal__caption {
-  margin: 20px 32px;
+  margin: 20px 32px 0;
   font-size: 20px;
+}
+
+.modal__delete-btn {
+  background: transparent;
+  border: none;
+  color: #ff4d00;
+  font-weight: 700;
+  font-size: 20px;
+  margin-right: 33.56px;
+  cursor: pointer;
+}
+
+.modal__button-align {
+  display: flex;
+  justify-content: space-between;
 }
 
 .modal__weather {

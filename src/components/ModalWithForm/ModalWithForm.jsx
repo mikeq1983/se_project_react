@@ -5,12 +5,12 @@ function ModalWithForm({
   children,
   buttonText,
   title,
-  activeModal,
+  onSubmit,
   isOpen,
   closeActiveModal,
   handleContentClick,
+  errors,
 }) {
-  console.log(isOpen);
   return (
     <div
       onClick={closeActiveModal}
@@ -25,9 +25,13 @@ function ModalWithForm({
         >
           <img src={closeButton} alt="close button" />
         </button>
-        <form className="modal__form">
+        <form onSubmit={onSubmit} className="modal__form">
           {children}
-          <button type="submit" className="modal__submit">
+          <button
+            disabled={Object.values(errors).some((item) => item !== "")}
+            type="submit"
+            className="modal__submit"
+          >
             {buttonText}
           </button>
         </form>
