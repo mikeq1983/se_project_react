@@ -12,7 +12,7 @@ import Profile from "../Profile/Profile";
 import Footer from "../Footer/Footer";
 import { getWeather, processWeatherData } from "../../utils/weatherApi";
 import CurrentTemperatureUnitContext from "../../contexts/CurrentTemperatureUnit";
-import { deleteItem, getItems } from "../../utils/api";
+import { getItems, addItem, deleteItem } from "../../utils/api";
 
 function App() {
   const [weatherData, setWeatherData] = useState({
@@ -34,14 +34,15 @@ function App() {
   };
 
   const onAddItem = (inputValues, handleReset) => {
-    const newCardData = {
-      name: inputValues.name,
-      imageUrl: inputValues.link,
-      weather: inputValues.weatherType,
-    };
-    setClothingItems([...clothingItems, newCardData]);
-    closeActiveModal();
-    handleReset();
+    addItem(inputValues.name, inputValues.imageUrl, inputValues.weather)
+      .then((newItem) => {
+        setClothingItems([...clothingItems, newItem]);
+        closeActiveModal();
+        handleReset();
+      })
+      .catch(() => {
+        console.error("Failed to add item", error);
+      });
   };
 
   const closeActiveModal = () => {
@@ -58,10 +59,15 @@ function App() {
   };
 
   const handleCardDelete = (_id) => {
-    const filteredItems = clothingItems.filter((item) => item._id !== _id);
-    deleteItem(_id);
-    setClothingItems(filteredItems);
-    closeActiveModal();
+    deleteItem(_id)
+      .then(() => {
+        const filteredItems = clothingItems.filter((item) => item._id !== _id);
+        setClothingItems(filteredItems);
+        closeActiveModal();
+      })
+      .catch((error) => {
+        console.error("Failed to delete item:", error);
+      });
   };
 
   useEffect(() => {

@@ -4,14 +4,14 @@ export function useForm(defaultValues) {
   const [values, setValues] = useState(defaultValues);
   const errorValues = {
     name: "",
-    link: "",
-    weatherType: "",
+    imageUrl: "",
+    weather: "",
   };
   const [errors, setErrors] = useState(errorValues);
   const errorMessages = {
     name: "Name must be at least 2 characters",
-    link: "Please enter a valid URL",
-    weatherType: "Please select a weather type",
+    imageUrl: "Please enter a valid URL",
+    weather: "Please select a weather type",
   };
 
   function validateField(evt) {

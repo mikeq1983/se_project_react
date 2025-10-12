@@ -12,6 +12,7 @@ function getItems() {
 }
 
 function addItem(name, imageUrl, weather) {
+  console.log("Data being sent to server:", { name, imageUrl, weather });
   return fetch(`${baseUrl}/items`, {
     method: "POST",
     body: JSON.stringify({

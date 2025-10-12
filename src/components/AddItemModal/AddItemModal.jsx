@@ -1,4 +1,4 @@
-import { useForm } from "../Hooks/useForm";
+import { useForm } from "../../Hooks/useForm";
 import ModalWithForm from "../ModalWithForm/ModalWithForm";
 import "./AddItemModal.css";
 
@@ -10,10 +10,11 @@ const AddItemModal = ({
 }) => {
   const defaultValues = {
     name: "",
-    link: "",
-    weatherType: "",
+    imageUrl: "",
+    weather: "",
   };
-  const { values, handleChange, handleReset, errors } = useForm(defaultValues);
+  const { values, handleChange, errors, handleReset} = useForm(defaultValues);
+  console.log(values);
   function handleSubmit(evt) {
     evt.preventDefault();
     onAddItem(values, handleReset);
@@ -27,7 +28,6 @@ const AddItemModal = ({
       closeActiveModal={closeActiveModal}
       onSubmit={handleSubmit}
       handleContentClick={handleContentClick}
-      handleReset={handleReset}
       errors={errors}
     >
       <label className="modal__label">
@@ -50,15 +50,15 @@ const AddItemModal = ({
         Image
         <input
           type="url"
-          name="link"
+          name="imageUrl"
           className="modal__input modal__input_type_url"
           id="clothing-link"
           placeholder="Image URL"
           required
-          value={values.link}
+          value={values.imageUrl}
           onChange={handleChange}
         />
-        {errors.link && <span className="modal__error">{errors.link}</span>}
+        {errors.imageUrl && <span className="modal__error">{errors.imageUrl}</span>}
       </label>
       <fieldset className="modal__radio-buttons">
         <legend className="modal__legend">Select the weather type:</legend>
@@ -66,9 +66,9 @@ const AddItemModal = ({
           <input
             id="hot"
             type="radio"
-            name="weatherType"
+            name="weather"
             className="modal__radio-input"
-            checked={values.weatherType === "hot"}
+            checked={values.weather === "hot"}
             value="hot"
             onChange={handleChange}
           ></input>
@@ -78,9 +78,9 @@ const AddItemModal = ({
           <input
             id="warm"
             type="radio"
-            name="weatherType"
+            name="weather"
             className="modal__radio-input"
-            checked={values.weatherType === "warm"}
+            checked={values.weather === "warm"}
             value="warm"
             onChange={handleChange}
           ></input>
@@ -90,16 +90,16 @@ const AddItemModal = ({
           <input
             id="cold"
             type="radio"
-            name="weatherType"
+            name="weather"
             className="modal__radio-input"
-            checked={values.weatherType === "cold"}
+            checked={values.weather === "cold"}
             value="cold"
             onChange={handleChange}
           ></input>
           Cold
         </label>
-        {errors.weatherType && (
-          <span className="modal__error">{errors.weatherType}</span>
+        {errors.weather && (
+          <span className="modal__error">{errors.weather}</span>
         )}
       </fieldset>
     </ModalWithForm>

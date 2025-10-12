@@ -2,7 +2,6 @@ import "./ItemModal.css";
 import previewClose from "../../assets/previewClose.png";
 
 function ItemModal({
-  activeModal,
   isOpen,
   closeActiveModal,
   card,
