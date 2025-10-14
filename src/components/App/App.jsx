@@ -36,11 +36,11 @@ function App() {
   const onAddItem = (inputValues, handleReset) => {
     addItem(inputValues.name, inputValues.imageUrl, inputValues.weather)
       .then((newItem) => {
-        setClothingItems([...clothingItems, newItem]);
+        setClothingItems([newItem, ...clothingItems]);
         closeActiveModal();
         handleReset();
       })
-      .catch(() => {
+      .catch((error) => {
         console.error("Failed to add item", error);
       });
   };

@@ -87,5 +87,12 @@
 .modal__submit {
   padding: 8px 16px;
   max-width: 124px;
+  height: 36px;
   margin-top: 40px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 4px;
+  font-weight: 700;
+  cursor: pointer;
 }

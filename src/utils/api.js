@@ -1,4 +1,4 @@
-function _checkResponse(res) {
+export function checkResponse(res) {
   if (res.ok) {
     return res.json();
   }
@@ -8,7 +8,7 @@ function _checkResponse(res) {
 const baseUrl = "http://localhost:3001";
 
 function getItems() {
-  return fetch(`${baseUrl}/items`).then(_checkResponse);
+  return fetch(`${baseUrl}/items`).then(checkResponse);
 }
 
 function addItem(name, imageUrl, weather) {
@@ -23,13 +23,13 @@ function addItem(name, imageUrl, weather) {
     headers: {
       "Content-Type": "application/json",
     },
-  }).then(_checkResponse);
+  }).then(checkResponse);
 }
 
 function deleteItem(_id) {
   return fetch(`${baseUrl}/items/${_id}`, {
     method: "DELETE",
-  }).then(_checkResponse);
+  }).then(checkResponse);
 }
 
 export { getItems, addItem, deleteItem };
